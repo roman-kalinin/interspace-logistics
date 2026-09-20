@@ -64,7 +64,7 @@ function OrbitRing({ radius, color, opacity }: { radius: number; color: string; 
 }
 
 // ---------------- Planet + label ----------------
-function PlanetMesh({ id, emissive, size, color, onHover }: { id: string; emissive: number; size: number; color: string; onHover: (h: boolean) => void }) {
+function PlanetMesh({ id, size, onHover }: { id: string; size: number; onHover: (h: boolean) => void }) {
   const ref = useRef<THREE.Mesh>(null);
   const tex = useTexture(`/textures/${id}.png`);
   useFrame((_, dt) => { if (ref.current) ref.current.rotation.y += dt * 0.04; });
@@ -94,7 +94,7 @@ function Planet({ id, emissive }: { id: string; emissive: number }) {
           <meshStandardMaterial color={meta.color} emissive={meta.color} emissiveIntensity={emissive} roughness={0.7} metalness={0.1} />
         </mesh>
       }>
-        <PlanetMesh id={id} emissive={emissive} size={meta.size} color={meta.color} onHover={setHover} />
+        <PlanetMesh id={id} size={meta.size} onHover={setHover} />
       </Suspense>
       <Html center position={[0, meta.size + 0.35, 0]} style={{ pointerEvents: "none" }} zIndexRange={[10, 0]}>
         <div className={`sys3d-planet-label ${hover ? "hot" : ""}`}>
