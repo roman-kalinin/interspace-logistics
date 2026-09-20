@@ -1,0 +1,102 @@
+.drawer-overlay {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(4,5,6,0.44);
+  backdrop-filter: blur(2px);
+  display: flex; justify-content: flex-end;
+  animation: fade-in 0.16s ease;
+}
+/* inline mode: no dark/blur backdrop — the map stays visible */
+.drawer-overlay-inline { background: transparent; backdrop-filter: none; pointer-events: none; }
+.drawer-overlay-inline .drawer { pointer-events: auto; margin: 14px 14px 14px 0; height: calc(100% - 28px); border-radius: var(--r-lg); box-shadow: var(--shadow-pop), inset 0 0 0 1px var(--hairline-str); }
+
+.drawer {
+  width: 520px; max-width: 94vw; height: 100%;
+  background: var(--surface-0);
+  box-shadow: -12px 0 48px rgba(0,0,0,0.5);
+  overflow-y: auto;
+  padding: 22px 24px 32px;
+  animation: drawer-in 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes drawer-in { from { transform: translateX(24px); opacity: 0.6; } to { transform: translateX(0); opacity: 1; } }
+
+/* vessel hero image (AI-generated) — bleeds past the drawer's padding */
+.drawer-hero { position: relative; height: 200px; margin: -22px -24px 18px; overflow: hidden; }
+.drawer-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.drawer-hero-grad { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14,15,18,0) 45%, rgba(14,15,18,0.6) 80%, rgba(14,15,18,0.96) 100%); }
+.drawer-hero-cap { position: absolute; left: 24px; bottom: 12px; display: flex; flex-direction: column; }
+.drawer-hero-class { font-size: 11px; color: var(--ink-3); letter-spacing: 0.4px; text-transform: uppercase; }
+.drawer-hero-name { font-size: 20px; font-weight: 600; color: #fff; letter-spacing: -0.3px; text-shadow: 0 2px 12px rgba(0,0,0,0.7); }
+.drawer-close-float { position: absolute; top: 14px; right: 14px; background: rgba(10,11,13,0.55); backdrop-filter: blur(6px); }
+.drawer-close-float:hover { background: rgba(10,11,13,0.8); }
+
+.drawer-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.drawer-id { font-size: 12px; color: var(--ink-3); letter-spacing: 0.5px; }
+.drawer-cargo { font-size: 18px; font-weight: 600; color: var(--ink-1); margin-top: 3px; letter-spacing: -0.3px; }
+.drawer-close { width: 32px; height: 32px; border-radius: var(--r-md); display: grid; place-items: center; color: var(--ink-3); transition: background 0.14s ease; }
+.drawer-close:hover { background: var(--fill-soft); color: var(--ink-1); }
+
+.drawer-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+
+/* route */
+.drawer-route { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; margin-bottom: 26px; }
+.dr-code { font-size: 15px; font-weight: 600; color: var(--ink-1); }
+.dr-name { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+.dr-body { font-size: 11px; color: var(--ink-4); }
+.dr-port-right { text-align: right; }
+.dr-line { position: relative; padding: 0 4px; }
+.dr-track { height: 3px; background: var(--fill-med); border-radius: 3px; }
+.dr-track-fill { height: 100%; background: var(--info); border-radius: 3px; transition: width 0.6s ease; }
+.dr-ship { position: absolute; top: 50%; transform: translate(-50%, -50%); color: var(--info); font-size: 13px; }
+.dr-eta { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); font-size: 11px; color: var(--ink-3); white-space: nowrap; }
+
+/* section labels */
+.drawer-section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase;
+  color: var(--ink-4); margin: 0 0 12px;
+}
+
+/* milestones */
+.milestones { display: flex; justify-content: space-between; margin-bottom: 28px; position: relative; }
+.ms { display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; flex: 1; }
+.ms-node {
+  width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 11px; font-weight: 600; z-index: 1;
+  background: var(--fill-med); color: var(--ink-4);
+}
+.ms-done .ms-node { background: var(--nominal-dim); color: var(--nominal); }
+.ms-current .ms-node { background: var(--info); color: #08131f; box-shadow: 0 0 0 4px var(--info-dim); }
+.ms-label { font-size: 10.5px; color: var(--ink-4); text-align: center; }
+.ms-done .ms-label, .ms-current .ms-label { color: var(--ink-2); }
+.ms-conn { position: absolute; top: 13px; left: 60%; width: 80%; height: 2px; background: var(--fill-med); }
+.ms-conn.on { background: var(--nominal-dim); }
+
+/* vessel telemetry grid */
+.vessel-tele-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  background: var(--surface-1); border-radius: var(--r-md);
+  padding: 18px 12px; margin-bottom: 26px;
+}
+
+/* detail grid */
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; margin-bottom: 26px; }
+.detail-item { }
+.detail-label { font-size: 11.5px; color: var(--ink-3); margin-bottom: 3px; }
+.detail-value { font-size: 14px; color: var(--ink-1); font-weight: 500; }
+
+/* assignment */
+.assign-card { background: var(--surface-1); border-radius: var(--r-md); padding: 16px; margin-bottom: 24px; }
+.av-head { display: flex; align-items: center; gap: 8px; }
+.av-name { font-size: 14px; font-weight: 600; color: var(--ink-1); }
+.av-class { font-size: 12px; color: var(--ink-3); margin: 2px 0 12px 15px; }
+.av-tele { display: flex; gap: 18px; margin-left: 15px; font-size: 12px; color: var(--ink-3); }
+.av-tele b { color: var(--ink-1); font-weight: 600; margin-left: 3px; }
+.assign-pilot { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding-top: 16px; box-shadow: inset 0 1px 0 var(--hairline); }
+.ap-name { font-size: 13.5px; font-weight: 600; color: var(--ink-1); }
+.ap-call { font-size: 11.5px; color: var(--ink-3); margin-top: 1px; letter-spacing: 0.4px; }
+
+/* actions */
+.drawer-actions { display: flex; gap: 8px; }
+.da-btn { flex: 1; padding: 10px; border-radius: var(--r-md); font-size: 13px; font-weight: 500; color: var(--ink-2); background: var(--fill-med); transition: background 0.14s ease, color 0.14s ease; }
+.da-btn:hover { background: var(--fill-strong); color: var(--ink-1); }
+.da-primary { background: var(--ink-1); color: var(--surface-0); }
+.da-primary:hover { background: #fff; color: var(--surface-0); }

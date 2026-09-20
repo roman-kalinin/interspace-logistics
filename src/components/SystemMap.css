@@ -1,0 +1,51 @@
+.sysmap {
+  position: relative;
+  width: 100%; height: 100%;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 12% 50%, rgba(30,34,44,0.6), transparent 55%),
+    var(--surface-1);
+}
+.sysmap-svg { width: 100%; height: 100%; display: block; }
+
+.orbit-ring { fill: none; stroke: rgba(255,255,255,0.035); stroke-width: 1; }
+.star { fill: #fff; opacity: 0.5; animation: pulse-dot 4s ease-in-out infinite; }
+.sun-core { fill: var(--caution); filter: drop-shadow(0 0 8px rgba(230,180,80,0.8)); }
+
+.traj-base { fill: none; stroke: rgba(255,255,255,0.07); stroke-width: 1.2; }
+.traj-active {
+  fill: none; stroke: var(--info); stroke-width: 1.4; opacity: 0.55;
+  stroke-dasharray: 5 7;
+  animation: dash-move 24s linear infinite;
+}
+
+.vessel-node { cursor: pointer; }
+.vessel-halo { opacity: 0.16; }
+.halo-info { fill: var(--info); }
+.halo-critical { fill: var(--critical); }
+.vessel-dot { stroke: rgba(10,11,13,0.9); stroke-width: 1.5; }
+.dot-info { fill: var(--info); }
+.dot-critical { fill: var(--critical); }
+.vessel-node:hover .vessel-halo { opacity: 0.28; }
+
+.tip-bg { fill: var(--surface-3); stroke: var(--hairline-str); }
+.tip-title { fill: var(--ink-1); font-size: 12.5px; font-weight: 600; }
+.tip-sub { fill: var(--ink-3); font-size: 11px; }
+
+.port-node { cursor: default; }
+.port-dot { fill: var(--ink-1); }
+.port-ring { fill: none; stroke: rgba(255,255,255,0.25); stroke-width: 1; }
+.port-label { fill: var(--ink-2); font-size: 12px; font-weight: 600; }
+.port-code { fill: var(--ink-4); font-size: 10.5px; letter-spacing: 0.3px; text-transform: uppercase; }
+
+.sysmap-legend {
+  position: absolute; bottom: 14px; left: 16px;
+  display: flex; gap: 16px;
+  font-size: 11.5px; color: var(--ink-3);
+}
+.sysmap-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.lg-dot { width: 8px; height: 8px; border-radius: 50%; }
+.lg-dot.dot-info { background: var(--info); }
+.lg-dot.dot-critical { background: var(--critical); }
+.lg-port { background: var(--ink-1); }

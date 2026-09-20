@@ -1,0 +1,93 @@
+/* -------------------- Status pill -------------------- */
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 9px 3px 8px;
+  border-radius: 999px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.1px;
+  white-space: nowrap;
+  background: var(--fill-soft);
+  color: var(--ink-2);
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+.pill-nominal  { background: var(--nominal-dim);  color: var(--nominal); }
+.pill-caution  { background: var(--caution-dim);  color: var(--caution); }
+.pill-critical { background: var(--critical-dim); color: var(--critical); }
+.pill-info     { background: var(--info-dim);     color: var(--info); }
+.pill-neutral  { background: var(--fill-soft);    color: var(--ink-2); }
+
+/* -------------------- Health dot -------------------- */
+.hdot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.hdot-nominal  { background: var(--nominal); box-shadow: 0 0 0 3px var(--nominal-dim); }
+.hdot-caution  { background: var(--caution); box-shadow: 0 0 0 3px var(--caution-dim); }
+.hdot-critical { background: var(--critical); box-shadow: 0 0 0 3px var(--critical-dim); }
+.hdot-pulse { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* -------------------- KPI tile -------------------- */
+.kpi {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 16px 18px; text-align: left;
+  background: var(--surface-1);
+  border-radius: var(--r-lg);
+  min-width: 0;
+  transition: background 0.16s ease, transform 0.16s ease;
+}
+.kpi-click:hover { background: var(--surface-2); }
+.kpi-active { background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--hairline-str); }
+.kpi-label { font-size: 12px; color: var(--ink-3); font-weight: 500; }
+.kpi-value { font-size: 26px; font-weight: 600; letter-spacing: -0.5px; color: var(--ink-1); line-height: 1; }
+.kpi-unit { font-size: 13px; color: var(--ink-3); font-weight: 500; margin-left: 4px; }
+.kpi-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 20px; }
+.kpi-delta { font-size: 12px; font-weight: 600; }
+.kpi-delta.good { color: var(--nominal); }
+.kpi-delta.bad  { color: var(--critical); }
+.spark { display: block; opacity: 0.9; }
+
+/* -------------------- Progress bar -------------------- */
+.pbar { width: 100%; background: var(--fill-med); border-radius: 999px; overflow: hidden; }
+.pbar-fill { height: 100%; border-radius: 999px; transition: width 0.6s ease; }
+.pbar-info { background: var(--info); }
+.pbar-nominal { background: var(--nominal); }
+.pbar-caution { background: var(--caution); }
+.pbar-critical { background: var(--critical); }
+.pbar-neutral { background: var(--ink-3); }
+
+/* -------------------- Gauge -------------------- */
+.gauge { display: flex; align-items: center; gap: 12px; }
+.gauge-num { font-size: 15px; font-weight: 600; fill: var(--ink-1); }
+.gauge-label { font-size: 13px; color: var(--ink-2); font-weight: 500; }
+.gauge-sub { font-size: 12px; color: var(--ink-3); }
+
+/* -------------------- Radial stat -------------------- */
+.rstat { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.rstat-num { font-size: 19px; font-weight: 600; fill: var(--ink-1); }
+.rstat-pct { font-size: 11px; fill: var(--ink-3); }
+.rstat-label { font-size: 12.5px; color: var(--ink-2); font-weight: 500; margin-top: 6px; }
+.rstat-sub { font-size: 11px; color: var(--ink-4); margin-top: 1px; }
+
+/* -------------------- Mini gauge -------------------- */
+.mgauge { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.mgauge-num { font-size: 12px; font-weight: 600; fill: var(--ink-1); }
+.mgauge-label { font-size: 10.5px; color: var(--ink-3); font-weight: 500; letter-spacing: 0.2px; }
+
+/* -------------------- Load meter (segmented) -------------------- */
+.lmeter { display: flex; gap: 3px; align-items: center; }
+.lmeter-seg { width: 4px; height: 14px; border-radius: 2px; background: var(--fill-med); transition: background 0.3s ease; }
+.lmeter-seg.on { background: var(--ink-2); }
+
+/* -------------------- Avatar -------------------- */
+.avatar {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-weight: 600; flex: none;
+  letter-spacing: 0.3px;
+}
+
+/* -------------------- Card -------------------- */
+.card { background: var(--surface-1); border-radius: var(--r-lg); }
+
+/* -------------------- Section title -------------------- */
+.section-title {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+  text-transform: uppercase; color: var(--ink-3);
+  margin-bottom: 12px;
+}
